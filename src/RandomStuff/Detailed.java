@@ -6,10 +6,52 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import net.sf.jfasta.FASTAElement;
+import net.sf.jfasta.FASTAFileReader;
+import net.sf.jfasta.impl.FASTAElementImpl;
+import net.sf.jfasta.impl.FASTAElementIterator;
+import net.sf.jfasta.impl.FASTAFileReaderImpl;
+import net.sf.jfasta.impl.FASTAFileWriter;
+
 public class Detailed {
-	public static void main (String[] args) {
+	public static void main (String[] args) throws IOException {
+		
+		// Write a FASTA file element by element
+		/*
+		  File out = new File("seq.fasta");
+			FASTAElement e1 = new FASTAElementImpl("header", "seq");
+			FASTAElement e2 = new FASTAElementImpl("header2", "seq2");
+			FASTAElement e3 = new FASTAElementImpl("head", "atgc");
+
+			List<FASTAElement> elements = Arrays.asList(e1, e2, e3);
+
+			
+			try {
+				FASTAFileWriter writer = new FASTAFileWriter(out);
+
+				for (FASTAElement e : elements) {
+					writer.write(e);
+				}
+				writer.close();
+			} catch (IOException e4) {
+				// TODO Auto-generated catch block
+				e4.printStackTrace();
+			}*/
+			
+			 final File file = new File("/Users/irene/eclipse-workspace/Testings/seq.fasta");
+
+		        final FASTAFileReader reader = new FASTAFileReaderImpl(file);
+
+		        final FASTAElementIterator it = reader.getIterator();
+
+		        while (it.hasNext()) {
+		            final FASTAElement el = it.next();
+		            System.out.println(el);
+		            //assertTrue(el.getHeader().contains("Homo sapiens spastin (SPAST)"));
+		        }
 		
 		String lin = "<td><a href=\"/cgi-bin/change_to_html.cgi?num=AAVM00000000\">Summary result file</a></td>";
 		//a.split("rec=");
