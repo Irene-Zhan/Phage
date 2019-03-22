@@ -18,6 +18,17 @@ import net.sf.jfasta.impl.FASTAFileWriter;
 
 public class Detailed {
 	public static void main (String[] args) throws IOException {
+		String a = "PHAGE_Lactob_CL2_NC_028835: major tail protein; AVU80_gp15; phage";
+		for(int k=0; k<a.split(":").length-1; k++) {
+			System.out.println(a.split(":")[k]);
+			System.out.println("h");
+		}
+		
+		int rest=a.split(":").length-1;
+		System.out.println(a.split(":")[rest].split(";")[0]);
+
+		System.out.println(a.split(":")[rest].split(";")[1]);
+		System.out.println(a.split(":")[rest].split(";")[2]);
 		
 		// Write a FASTA file element by element
 		/*
